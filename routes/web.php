@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\Shop\ProductDetailController;
+use App\Http\Controllers\Shop\ProductListController;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use Lunar\Admin\Support\Facades\LunarPanel;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('products', [ProductListController::class, '__invoke'])->name('product.list');
+Route::get('product/{id}', [ProductDetailController::class, '__invoke'])->name('product.detail');
